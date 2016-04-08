@@ -6,28 +6,44 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.Random;
 
+import storage.KeyAlreadyUsedException;
+import storage.NonExistingKeyException;
+import storage.Storage;
+
 public class Serveur implements ServeurInterface {
 
     static Random rand = new Random();
     
+    private Storage storage = new Storage();
+    
     @Override
     public boolean stockObject(String key, Object aStocker) throws RemoteException {
-	// TODO Auto-generated method stub
+	try {
+	    storage.store(aStocker, key);
+	} catch (KeyAlreadyUsedException e) {
+	    // TODO Auto-generated catch block
+	    e.printStackTrace();
+	    return false;
+	}
 	return true;
     }
 
     @Override
     public Object getObject(String key) throws RemoteException {
 	// TODO Auto-generated method stub
-	return null;
+	try {
+	    return storage.get(key);
+	} catch (NonExistingKeyException e) {
+	    return null;
+	}
     }
 
     public static void main(String[] args) {
 
 	try {
 	    Serveur moi = new Serveur();
-	    ServeurInterface h_stub = (ServeurInterface) UnicastRemoteObject.exportObject(moi, 0);
 	    Registry registre = LocateRegistry.getRegistry();
+	    ServeurInterface h_stub = (ServeurInterface) UnicastRemoteObject.exportObject(moi, 0);
 	    String name = "serveur"+rand.nextInt(100);
 	    registre.bind(name, h_stub);
 	    System.out.println("Je suis " + name);
