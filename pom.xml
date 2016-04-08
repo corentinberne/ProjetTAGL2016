@@ -6,6 +6,6 @@
   <packaging>pom</packaging>
 
   <modules>
-	<module>./ProjetTAGL2016/TrueProjetTAGL2016</module>
+	<module>ProjetTAGL2016/TrueProjetTAGL2016</module>
   </modules>
 </project>
