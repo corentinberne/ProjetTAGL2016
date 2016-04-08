@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Storage {
 	
-	private static final int MAX_MEMORY = 124780560;
+	private static final int MAX_NB_OBJECTS = 5;
 	private HashMap<String, Object> memory;
 	private HashMap<String, Long> lastUses;
 	
@@ -39,14 +39,9 @@ public class Storage {
 			throw new KeyAlreadyUsedException();
 		}
 		else {
-			Runtime r = Runtime.getRuntime();
-			Long usedMemory = r.totalMemory();
 			memory.put(key, o);
 			lastUses.put(key, System.currentTimeMillis());
-			System.out.println(usedMemory);
-			System.out.println(r.freeMemory());
-			System.out.println(r.maxMemory());
-			while(usedMemory > MAX_MEMORY){
+			if(memory.size() > MAX_NB_OBJECTS){
 				memory.remove(getLRU());
 				lastUses.remove(getLRU());
 			}

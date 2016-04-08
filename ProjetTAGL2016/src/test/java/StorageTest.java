@@ -58,4 +58,21 @@ public class StorageTest {
 	public void removeFailTest() throws NonExistingKeyException{
 		s.remove(key);
 	}
+	
+	@Test(expected = NonExistingKeyException.class)
+	public void LRUStoreTest() throws NonExistingKeyException{
+		assertTrue(s.getMemory().isEmpty());
+		try {
+			s.store(toStock, key);
+			s.store("chaine2", "cleChaine2");
+			s.store("chaine3", "cleChaine3");
+			s.store("chaine4", "cleChaine4");
+			s.store("chaine5", "cleChaine5");
+			assertTrue(s.getMemory().size()==5);
+			s.store("chaine6", "cleChaine6");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		s.get(key);
+	}
 }
