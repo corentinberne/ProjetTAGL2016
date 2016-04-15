@@ -72,7 +72,7 @@ public class Storage {
 		}
 	}
 	
-	/* Fonctions pour modifier des listes */
+	/* Fonctions pour manipuler des listes */
 	
 	public synchronized void addToList(String key, Object o) throws NonExistingKeyException{
 		List<Object> list = (List<Object>) get(key);
