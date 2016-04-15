@@ -64,9 +64,13 @@ public class StorageTest {
 		assertTrue(s.getMemory().isEmpty());
 		try {
 			s.store(toStock, key);
+			Thread.sleep(2);
 			s.store("chaine2", "cleChaine2");
+			Thread.sleep(2);
 			s.store("chaine3", "cleChaine3");
+			Thread.sleep(2);
 			s.store("chaine4", "cleChaine4");
+			Thread.sleep(2);
 			s.store("chaine5", "cleChaine5");
 			assertTrue(s.getMemory().size()==5);
 			s.store("chaine6", "cleChaine6");
@@ -74,5 +78,28 @@ public class StorageTest {
 			e.printStackTrace();
 		}
 		s.get(key);
+	}
+	
+	@Test(expected = NonExistingKeyException.class)
+	public void LRUGetTest() throws NonExistingKeyException{
+		assertTrue(s.getMemory().isEmpty());
+		try {
+			s.store(toStock, key);
+			Thread.sleep(2);
+			s.store("chaine2", "cleChaine2");
+			Thread.sleep(2);
+			s.store("chaine3", "cleChaine3");
+			Thread.sleep(2);
+			s.get(key);
+			Thread.sleep(2);
+			s.store("chaine4", "cleChaine4");
+			Thread.sleep(2);
+			s.store("chaine5", "cleChaine5");
+			assertTrue(s.getMemory().size()==5);
+			s.store("chaine6", "cleChaine6");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		s.get("cleChaine2");
 	}
 }

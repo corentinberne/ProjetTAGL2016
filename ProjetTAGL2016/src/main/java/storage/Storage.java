@@ -41,9 +41,11 @@ public class Storage {
 		else {
 			memory.put(key, o);
 			lastUses.put(key, System.currentTimeMillis());
-			if(memory.size() > MAX_NB_OBJECTS){
-				memory.remove(getLRU());
-				lastUses.remove(getLRU());
+			int size = memory.size();
+			if(size > MAX_NB_OBJECTS){
+				String keyToRemove = getLRU();
+				memory.remove(keyToRemove);
+				lastUses.remove(keyToRemove);
 			}
 		}
 	}

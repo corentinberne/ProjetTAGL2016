@@ -1,0 +1,16 @@
+BERNE Corentin
+FERNANDES Jeremy
+OCHIER Sebastien
+SOULIER Clément
+
+Projet Stockage clé-valeur
+
+Fonctionnalités offertes par notre système de stockage clé-valeur :
+	- Client/Serveur : différents clients peuvent accéder à notre serveur de stockage et y stocker des données.
+	- Cache LRU : nous pouvons fixer un nombre maximum d'objets à stocker sur le serveur.
+	- Partitionnement : les clients ont accès à plusieurs serveurs et sont libres de choisir sur lequel stocker leurs données.
+	
+Fonctionnalités validées à l'aide de tests unitaires :
+	- Les différentes fonctionnalités du système de stockage (stocker, accéder, supprimer).
+	- Cache LRU (suppression de la donnée la moins récemment accédée).
+	
