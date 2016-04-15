@@ -34,7 +34,7 @@ public class Storage {
 		return LRU;
 	}
 	
-	public void store(Object o, String key) throws KeyAlreadyUsedException{
+	public synchronized void store(Object o, String key) throws KeyAlreadyUsedException{
 		if(memory.containsKey(key)){
 			throw new KeyAlreadyUsedException();
 		}
@@ -50,7 +50,7 @@ public class Storage {
 		}
 	}
 	
-	public void remove(String key) throws NonExistingKeyException{
+	public synchronized void remove(String key) throws NonExistingKeyException{
 		if(memory.containsKey(key)){
 			memory.remove(key);
 			lastUses.remove(key);
@@ -60,7 +60,7 @@ public class Storage {
 		}
 	}
 	
-	public Object get(String key) throws NonExistingKeyException{
+	public synchronized Object get(String key) throws NonExistingKeyException{
 		if(memory.containsKey(key)){
 			lastUses.put(key, System.currentTimeMillis());
 			return memory.get(key);
