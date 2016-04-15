@@ -7,6 +7,9 @@ import storage.Storage;
 
 import static org.junit.Assert.*;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class StorageTest {
 	Storage s;
 	String toStock = "chaine1";
@@ -101,5 +104,40 @@ public class StorageTest {
 			e.printStackTrace();
 		}
 		s.get("cleChaine2");
+	}
+	
+	@Test
+	public void listTest(){
+		assertTrue(s.getMemory().isEmpty());
+		try {
+			List<Object> list = new LinkedList<>();
+			list.add(1);
+			s.store(list, key);
+			assertTrue(s.getMemory().size()==1);
+			assertTrue(s.getListSize(key)==1);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			s.addToList(key, 2);
+			assertTrue(s.getListSize(key)==2);
+			s.removeFromList(key, 0);
+			assertTrue(s.getListSize(key)==1);
+			assertTrue((int) s.getFromList(key, 0)==2);
+			LinkedList<Object> listToAdd = new LinkedList<Object>();
+			listToAdd.add(3);
+			listToAdd.add(4);
+			listToAdd.add(5);
+			s.addAllToList(key, listToAdd);
+			assertTrue((int) s.setInList(key, 3, 6)==6);
+			assertTrue(s.getListSize(key)==4);
+			List<Object> subList = s.getRangeFromList(key, 1, 2);
+			assertTrue(subList.size()==2);
+			assertTrue((int) subList.get(0)==3);
+			assertTrue((int) subList.get(1)==4);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

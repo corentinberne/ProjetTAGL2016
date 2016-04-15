@@ -1,7 +1,9 @@
 package storage;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class Storage {
@@ -68,6 +70,44 @@ public class Storage {
 		else {
 			throw new NonExistingKeyException();
 		}
+	}
+	
+	/* Fonctions pour modifier des listes */
+	
+	public synchronized void addToList(String key, Object o) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		list.add(o);
+	}
+	
+	public synchronized void addAllToList(String key, Collection<Object> o) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		list.addAll(o);
+	}
+	
+	public synchronized Object removeFromList(String key, int index) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		return list.remove(index);
+	}
+	
+	public synchronized Object getFromList(String key, int index) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		return list.get(index);
+	}
+	
+	public synchronized int getListSize(String key) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		return list.size();
+	}
+	
+	public synchronized List<Object> getRangeFromList(String key, int start, int end) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		return list.subList(start, end+1);
+	}
+	
+	public synchronized Object setInList(String key, int index, Object value) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		list.set(index, value);
+		return list.get(index);
 	}
 	
 }
