@@ -136,6 +136,9 @@ public class StorageTest {
 			assertTrue(subList.size()==2);
 			assertTrue((int) subList.get(0)==3);
 			assertTrue((int) subList.get(1)==4);
+			s.addToListAtIndex(key, 12, 2);
+			assertTrue(s.getListSize(key)==5);
+			assertTrue((int) s.getFromList(key, 2)==12);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

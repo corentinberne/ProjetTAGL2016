@@ -79,6 +79,11 @@ public class Storage {
 		list.add(o);
 	}
 	
+	public synchronized void addToListAtIndex(String key, Object o, int index) throws NonExistingKeyException{
+		List<Object> list = (List<Object>) get(key);
+		list.add(index, o);
+	}
+	
 	public synchronized void addAllToList(String key, Collection<Object> o) throws NonExistingKeyException{
 		List<Object> list = (List<Object>) get(key);
 		list.addAll(o);
