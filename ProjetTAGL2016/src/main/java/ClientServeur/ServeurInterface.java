@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface ServeurInterface  extends Remote{
 
-
+ 
 	public boolean stockObject(String key, Object aStocker) throws RemoteException;
 	
 	

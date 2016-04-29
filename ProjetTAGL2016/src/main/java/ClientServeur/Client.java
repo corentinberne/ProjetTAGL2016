@@ -97,7 +97,7 @@ public class Client {
 		case "lpushx":
 		    serv = lesObjetsStockes.get(command[1]);
 		    try {
-			serv.lPushX(command[1], creerObjetSimple());
+			serv.lPushX(command[1], command[2]);
 		    } catch (RemoteException e) {
 
 		    }

@@ -124,8 +124,15 @@ public class Serveur implements ServeurInterface {
 
     @Override
     public List<Object> lRange(String key, int start, int stop) throws RemoteException {
+	
+	if(start < 0 || stop >= lLen(key) || start > lLen(key) || stop < 0)
+	    return null;
+	
 	try {
-	    return this.storage.getRangeFromList(key, start, stop);
+	    if(start <= stop)
+		return this.storage.getRangeFromList(key, start, stop);
+	    else
+		return this.storage.getRangeFromList(key, stop, start);
 	} catch (NonExistingKeyException e) {
 	}
 	return null;
@@ -169,6 +176,10 @@ public class Serveur implements ServeurInterface {
     @Override
     public void lSet(String key, int index, Object value) throws RemoteException {
 	try {
+	    
+	    if(index < 0 || index >= lLen(key))
+		    return;
+	    
 	    this.storage.setInList(key, index, value);
 	} catch (NonExistingKeyException e) {
 	}
@@ -177,12 +188,18 @@ public class Serveur implements ServeurInterface {
     @Override
     public void lTrim(String key, int start, int stop) throws RemoteException {
 
+	if(start < 0 || stop >= lLen(key) || start > lLen(key) || stop < 0)
+	    return;
+	
 	try {
 
-	    for (int i = this.storage.getListSize(key) - 1; i > stop; i--)
+	    int borneSup = (start < stop) ? stop : start;
+	    int borneInf = (start < stop) ? start : stop;
+	    
+	    for (int i = this.storage.getListSize(key) - 1; i > borneSup; i--)
 		this.storage.removeFromList(key, i);
 
-	    for (int i = 0; i < start; i++)
+	    for (int i = 0; i < borneInf; i++)
 		this.storage.removeFromList(key, 0);
 	} catch (Exception e) {
 	}
