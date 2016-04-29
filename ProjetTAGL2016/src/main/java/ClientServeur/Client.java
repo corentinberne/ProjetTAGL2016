@@ -259,7 +259,7 @@ public class Client {
 	System.out.println("-h, --help, help : pour afficher cette aide");
 	System.out.println("q, quit, quitter, exit : pour terminer l'execution du client");
 	System.out.println("lindex <key> <index> : get an element from a list by its index");
-	System.out.println("linsert <key> <BEFORE|AFTER> <pivot> : Insert a element before of after an other element");
+	System.out.println("linsert <key> <BEFORE|AFTER> <pivot> <value> : Insert a element before of after an other element");
 	System.out.println("llen <key> : get length of a list");
 	System.out.println("lpop <key> : remove and get the first element in a list");
 	System.out.println("lpush <key> : prepend one or multi element to a list");
