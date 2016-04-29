@@ -76,45 +76,85 @@ public class Storage {
 	/* Fonctions pour manipuler des listes */
 	
 	public synchronized void addToList(String key, Object o) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		list.add(o);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			list.add(o);
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized void addToListAtIndex(String key, Object o, int index) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		list.add(index, o);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			list.add(index, o);			
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized void addAllToList(String key, Collection<Object> o) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		list.addAll(o);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			list.addAll(o);	
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized Object removeFromList(String key, int index) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		return list.remove(index);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			return list.remove(index);	
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized Object getFromList(String key, int index) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		return list.get(index);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			return list.get(index);	
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized int getListSize(String key) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		return list.size();
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			return list.size();	
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized List<Object> getRangeFromList(String key, int start, int end) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		List<Object> res = new ArrayList<Object>(list.subList(start, end+1));
-		return res;
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			List<Object> res = new ArrayList<Object>(list.subList(start, end+1));
+			return res;
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 	public synchronized Object setInList(String key, int index, Object value) throws NonExistingKeyException{
-		List<Object> list = (List<Object>) get(key);
-		list.set(index, value);
-		return list.get(index);
+		if(memory.containsKey(key) && get(key) instanceof List){
+			List<Object> list = (List<Object>) get(key);
+			list.set(index, value);
+			return list.get(index);	
+		}
+		else {
+			throw new NonExistingKeyException();
+		}
 	}
 	
 }
