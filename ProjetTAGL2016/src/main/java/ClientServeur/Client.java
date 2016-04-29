@@ -65,7 +65,7 @@ public class Client {
 		case "linsert":
 		    serv = lesObjetsStockes.get(command[1]);
 		    try {
-			serv.lInsert(command[1], command[2], Integer.parseInt(command[3]), creerObjetSimple());
+			serv.lInsert(command[1], command[2], Integer.parseInt(command[3]), Integer.parseInt(command[4]));
 		    } catch (RemoteException e) {
 
 		    }
