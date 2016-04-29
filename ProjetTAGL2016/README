@@ -18,7 +18,23 @@ Fonctionnalités validées à l'aide de tests unitaires :
 	- Manipulation de listes.
 	
 Manuel d'utilisation :
-
+	add-serveur : pour ajouter un serveur
+	stock : pour stocker un couple clé-valeur
+	stock-list: pour stocker une liste d'entiers
+	retrieve <key>: pour obtenir l'objet associé à une clé
+	-h, --help, help : pour afficher cette aide
+	q, quit, quitter, exit : pour terminer l'execution du client
+	(N.B. les commandes de manipulation des listes sont les mêmes que Redis)
+	lindex <key> <index> : get an element from a list by its index
+	linsert <key> <BEFORE|AFTER> <pivot> : Insert a element before of after an other element
+	llen <key> : get length of a list
+	lpop <key> : remove and get the first element in a list
+	lpush <key> : prepend one or multi element to a list
+	lpushx <key> <value> : prepend one element to a list, only if the list exists
+	lrange <key> <start> <stop> : get a range of elements from a list
+	lrem <key> <count> <value>: remove elements from a list
+	lset <key> <index> <value>: set the value of a element in a list by its index
+	ltrim <key> <start> <stop>: trim a list to a specified range
 
 Feedback :
 Travis est plutôt simple à mettre en place, à l'exception du fait qu'il faut créer un autre fichier pom.xml à la racine du projet pour qu'il utilise Maven plutôt qu'Ant.
