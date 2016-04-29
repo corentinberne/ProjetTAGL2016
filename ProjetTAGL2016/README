@@ -9,14 +9,15 @@ Fonctionnalités offertes par notre système de stockage clé-valeur :
 	- Client/Serveur : différents clients peuvent accéder à notre serveur de stockage et y stocker des données simples (entiers, chaînes de caractères) ou plus complexes (listes).
 		Cet aspect a été réalisé grâce à RMI. 
 	- Cache LRU : nous pouvons fixer un nombre maximum d'objets à stocker sur le serveur.
-	- Partitionnement : les clients ont accès à plusieurs serveurs et sont libres de choisir sur lequel stocker leurs données.
+	- Partitionnement : notre système de stockage est découpé en plusieurs serveurs.
 	- Gestion des accès concurrents : nos méthodes sont synchronisées, un seul client à la fois peut stocker / accéder à un objet.
 	- Manipulation de listes : un utilisateur peut modifier une liste qu'il a stockée de façon similaire à ce qui est proposé par Redis.
 	
 Fonctionnalités validées à l'aide de tests unitaires :
-	- Les différentes fonctionnalités du système de stockage (stocker, accéder, supprimer).
-	- Cache LRU (suppression de la donnée la moins récemment accédée).
-	- Manipulation de listes.
+	- Les différentes fonctionnalités du système de stockage (stocker, accéder, supprimer) (coverage 100%).
+	- Cache LRU (suppression de la donnée la moins récemment accédée) (coverage 100%).
+	- Manipulation de listes (coverage 100%).
+	- Interface serveur (coverage 70%).
 	
 Manuel d'utilisation :
 	Pour lancer un serveur, il faut au préalable lancer RMIregistry grâce au script Serveur présent à la racine du projet.
