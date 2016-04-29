@@ -1,5 +1,6 @@
 package storage;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -137,7 +138,8 @@ public class Storage {
 	public synchronized List<Object> getRangeFromList(String key, int start, int end) throws NonExistingKeyException{
 		if(memory.containsKey(key) && get(key) instanceof List){
 			List<Object> list = (List<Object>) get(key);
-			return list.subList(start, end+1);	
+			List<Object> res = new ArrayList<Object>(list.subList(start, end+1));
+			return res;
 		}
 		else {
 			throw new NonExistingKeyException();
