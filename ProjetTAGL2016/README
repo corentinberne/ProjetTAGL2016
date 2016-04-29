@@ -7,6 +7,7 @@ Projet Stockage clé-valeur
 
 Fonctionnalités offertes par notre système de stockage clé-valeur :
 	- Client/Serveur : différents clients peuvent accéder à notre serveur de stockage et y stocker des données simples (entiers, chaînes de caractères) ou plus complexes (listes).
+		Cet aspect a été réalisé grâce à RMI. 
 	- Cache LRU : nous pouvons fixer un nombre maximum d'objets à stocker sur le serveur.
 	- Partitionnement : les clients ont accès à plusieurs serveurs et sont libres de choisir sur lequel stocker leurs données.
 	- Gestion des accès concurrents : nos méthodes sont synchronisées, un seul client à la fois peut stocker / accéder à un objet.
@@ -18,6 +19,7 @@ Fonctionnalités validées à l'aide de tests unitaires :
 	- Manipulation de listes.
 	
 Manuel d'utilisation :
+	Pour lancer un serveur, il faut au préalable lancer RMIregistry grâce au script Serveur présent à la racine du projet.
 	add-serveur : pour ajouter un serveur
 	stock : pour stocker un couple clé-valeur
 	stock-list: pour stocker une liste d'entiers
@@ -26,7 +28,7 @@ Manuel d'utilisation :
 	q, quit, quitter, exit : pour terminer l'execution du client
 	(N.B. les commandes de manipulation des listes sont les mêmes que Redis)
 	lindex <key> <index> : get an element from a list by its index
-	linsert <key> <BEFORE|AFTER> <pivot> : Insert a element before of after an other element
+	linsert <key> <BEFORE|AFTER> <pivot> <value> : Insert an element before of after an other element
 	llen <key> : get length of a list
 	lpop <key> : remove and get the first element in a list
 	lpush <key> : prepend one or multi element to a list
