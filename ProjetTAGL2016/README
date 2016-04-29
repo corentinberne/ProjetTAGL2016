@@ -21,5 +21,5 @@ Manuel d'utilisation :
 
 
 Feedback :
-Travis est plutôt simple à mettre en place, à l'exception du fait qu'il faut créer un autre fichier pom.xml à la racine du projet pour qu'il utilise Maven.
-Même si il n'y a pas beaucoup de tests unitaires sur ce projet, on comprend vite l'intérêt d'un tel outil pour s'assurer qu'un nouveau commit ne "casse" rien de ce quie xiste déjà.
+Travis est plutôt simple à mettre en place, à l'exception du fait qu'il faut créer un autre fichier pom.xml à la racine du projet pour qu'il utilise Maven plutôt qu'Ant.
+Même si il n'y a pas beaucoup de tests unitaires sur ce projet, on comprend vite l'intérêt d'un tel outil pour s'assurer qu'un nouveau commit ne "casse" rien de ce qui existe déjà.
