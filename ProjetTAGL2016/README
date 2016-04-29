@@ -35,7 +35,7 @@ Manuel d'utilisation :
 	lpush <key> : prepend one or multi element to a list
 	lpushx <key> <value> : prepend one element to a list, only if the list exists
 	lrange <key> <start> <stop> : get a range of elements from a list
-	lrem <key> <count> <value>: remove elements from a list
+	lrem <key> <count> <value>: remove elements from a listvalue
 	lset <key> <index> <value>: set the value of a element in a list by its index
 	ltrim <key> <start> <stop>: trim a list to a specified range
 
